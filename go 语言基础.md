@@ -84,44 +84,43 @@ fmt.Print("%s",s1)
 
     
 
-    ### 函数
+### 函数
 
-    需要声明，函数名 ， input类型， output类型, 函数内容
+需要声明，函数名 ， input类型， output类型, 函数内容
 
-    声明括号里面写input形参及变量类型， 括号外写output类型
-    
-    ```go
-    func fun(a1 int, a2 int)int{
-      b = a1+ a2
-      return a1+a2
+声明括号里面写input形参及变量类型， 括号外写output类型
+
+```go
+func fun(a1 int, a2 int)int{
+  b = a1+ a2
+  return a1+a2
 }
-    ```
+```
 
-    ### 打开文件
-    
-    ```go		
-    file, err := os.Open("test.txt")
-    if err != nil{
-      panic(err)
-    }
-    defer file.Close()
+### 打开文件
+
+```go		
+file, err := os.Open("test.txt")
+if err != nil{
+  panic(err)
+}
+defer file.Close()
 scanner := bufio.NewScanner(file)
-    或者
+或者
 rd := bufio.NewReader(file)
-    
-    for scanner.Scan(){
+
+for scanner.Scan(){
   fmt.Println(strings.TrimSpace(scanner.Text))
-    }
-    
-    
-    
-    ```
-    
-    ### defer 延迟语句 ， 在函数最后执行
-    
-    1. defer 先传递参数， 最后执行
-    2. 常用于文件读写
-    
+}
+
+
+
+```
+
+### defer 延迟语句 ， 在函数最后执行
+
+1. defer 先传递参数， 最后执行
+2. 常用于文件读写
 
 
 
