@@ -88,29 +88,31 @@ fmt.Print("%s",s1)
 
     需要声明，函数名 ， input类型， output类型, 函数内容
 
+    声明括号里面写input形参及变量类型， 括号外写output类型
+    
     ```go
-    func fun(a1 int, a2 int)(b int){
+    func fun(a1 int, a2 int)int{
       b = a1+ a2
       return a1+a2
-    }
+}
     ```
 
     ### 打开文件
-
+    
     ```go		
     file, err := os.Open("test.txt")
     if err != nil{
       panic(err)
     }
     defer file.Close()
-    scanner := bufio.NewScanner(file)
+scanner := bufio.NewScanner(file)
     或者
 rd := bufio.NewReader(file)
     
-for scanner.Scan(){
-      fmt.Println(strings.TrimSpace(scanner.Text))
+    for scanner.Scan(){
+  fmt.Println(strings.TrimSpace(scanner.Text))
     }
-
+    
     
     
     ```
@@ -120,5 +122,36 @@ for scanner.Scan(){
     1. defer 先传递参数， 最后执行
     2. 常用于文件读写
     
-    
+
+
+
+### 读 json数据
+
+```go
+import "encoding/json"
+file, err := os.Open("test.txt")
+if err != nil{
+  painc(err)
+}
+defer file.Close()
+
+var map1 = map[string][string]
+decoder := json.NewDecoder(file)
+err = decoder.Decode(&person)
+if err != nil{
+  panic(err)
+}else{
+  fmt.Println(person)
+}
+```
+
+### strings
+
+TrimSpace， 去除字符串前后端空格。
+
+```go
+line = strings.TrimSpace(line)
+```
+
+
 
